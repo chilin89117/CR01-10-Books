@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CR01-10-Books</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="add_book.html">Add book</a>
+        <a href="add_store.html">Add Store</a>
+      </div>
+    </header>
+    <div class="container">
+      <div class="books_container"></div>
+    </div>
+
+    <script>
+      $.ajax({
+        type: "GET",
+        url: "/api/books?limit=5&ord=desc"
+      })
+      .done((data, textStatus, jqXHR) => {
+        let template = ``;
+        data.map((book) => {
+          template += `
+            <a class="book_item" href="edit_book.html?book_id=${book._id}">
+              <div class="item name">
+                <span>Book Name:</span> ${book.name}
+              </div>
+              <div class="item author">
+                <span>Book author:</span> ${book.author}
+              </div>
+              <div class="item price">
+                <span>Book price:</span> ${book.price}
+              </div>
+            </a> 
+          `
+        });
+        $('.books_container').append(template);
+      })
+      .fail((jqXHR, textStatus, errorThrown) => {
+        alert(`1. ${jqXHR.responseText}\n2. ${textStatus}\n3. ${errorThrown}`);
+      });
+    </script>
+  </body>
+</html>

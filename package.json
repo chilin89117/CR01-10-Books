@@ -1,0 +1,20 @@
+{
+  "name": "cr01-10-books",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "engines": {
+    "node": "9.11.1"
+  },
+  "keywords": [],
+  "author": "Chi Lin <chilin89117@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.1.0"
+  }
+}
