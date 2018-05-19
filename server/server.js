@@ -6,6 +6,7 @@ const booksRouter = require('../routes/books');
 const storesRouter = require('../routes/stores');
 
 app.use(express.static(__dirname + '/../app'));
+app.use(express.static(__dirname + '/../node_modules/jquery/dist'));
 app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
